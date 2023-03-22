@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Apply</title>
+    <script>
+        //스크립트 코드는 head, body 양쪽에 모두 위치 가능하다
+        function printDate() {
+            document.getElementById("date").innerHTML = Date();
+        }
+    </script>
+    <script src = "/js/example.js">
+        /*html파일과 javscript파일 을 분리해놓으면 
+        1. 유지보수가 쉬워진다
+        2. html, javscript 각각 읽기가 쉽다.
+        3. 외부 자바스크립트 파일은 웹 브라우저가 미리 읽어 올 수 있어 웹페이지의 로딩 속도가 빠르다.
+        */
+    </script>
+</head>
+<body>
+    <h1> head태그 내의 자바스크립트 </h1>
+    <p>자바스크립트를 이용하면 현재 날짜와 시간 정보에도 손쉽게 접근 할 수 있다!.</p>
+    <button onclick = "printDate()">현재 날짜와 시간 표시하기!</button>
+    <p id = "date"></p>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>body 태그 내의 자바스크립트 </h1>
+    <p>자바스크립트를 이용하면 현재 날짜와 시간 정보에도 손쉽게 접근 할 수 있다.</p>
+    <!-- head와 메소드 이름이 똑같으면 하나만 실행되서 명칭을 변경해줌 -->
+    <button onclick="printDate1()"> 현재 날짜와 시간 표시하기!</button>
+    <p id="date1"></p>
+    <script>
+        function printDate1(){
+            document.getElementById("date1").innerHTML = Date();
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>외부 자바스크립트 파일</h1>
+    <p> 자바스크립트를 이용하면 현재 날짜와 시간 정보에도 손쉽게 접근 할 수 있다.</p>
+    <button onclick="printDate3()"> 현재 날짜와 시간 표시하기</button>
+    <p id="date3"></p>
+</body>
+</html>

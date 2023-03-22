@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Conditional_Statement</title>
+</head>
+<body>
+    <h1>if 문</h1>
+    <script>
+        var x=10, y=20;
+        if(x == y) {
+            document.write("x와 y는 같습니다.");
+        }
+        if(x < y) {
+            document.write("x가 y보다 작습니다.");
+        }
+        if(x > y) //실행될 실행문이 한 줄 뿐이라면 대괄호 생략 가능
+            document.write("x가 y보다 큽니다.")
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>else 문</h1>
+    <script>
+        var x1 = 10, y1 = 20;
+        if ( x1 == y1) {
+            document.write("x와 y는 같습니다.");
+        } else { //x와 y가 같지 않는경우
+            if(x1 < y1)
+                document.write("x가 y보다 작습니다.");
+            else //실행될 실행문이 한 줄 뿐이라면 대괄호 생략 가능
+                document.write("x가 y보다 큽니다.");
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>else if 문</h1>
+    <script>
+        var x2 = 10, y2 = 20;
+        if( x2 == y2){
+            document.write("x2와 y2는 같습니다.");
+        }
+        else if (x2 < y2) {
+            document.write("x가 y보다 작습니다.");
+        }
+        else {
+            document.write("x가 y보다 큽니다.");
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1> Switch 문 </h1>
+    <script>
+        var x3 = 10;
+
+        switch (typeof x) {
+        case "number" :
+            document.write("변수 x의 타입은 숫자입니다.");
+            break;
+        case "string" :
+        document.write("변수 x의 타입은 문자열 입니다.");
+            break;
+        case "object" :
+            document.write("변수 x의 타입은 객체 입니다.");
+            break;
+        default :
+            document.write("변수 x의 타입을 잘 모르겠네요.");
+            break;
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    
+    <h1>여러 개의 case절을 가지는 switch문</h1>
+
+    <script>
+        var day = new Date().getDay();
+
+        switch(day) {
+        case 1 :
+        case 2 :
+        case 3 :
+        case 4 :
+        default :
+            document.write("아직도 주말은 멀었네요.. 힘내자구요!!");
+            break;
+        case 6 :
+        case 0 :
+            document.write("즐거운 주말에도 열심히 공부하는 당신~ 최고에요!!");
+            break;
+        }
+    </script>
+</body>
+</html>

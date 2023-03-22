@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Variables</title>
+</head>
+<body>
+    <h1>변수의 선언과 초기화</h1>
+    <!-- var키워드를 사용하여 변수를 선언
+    선언되지 않은 변수를 사용하려고 하거나 접근하려고 하면 오류 발생
+    단, 선언되지 않은 변수를 초기화 할 경우에는 자동으로 선언을 먼저 한 후 초기화 진행-->
+    <p id="date"></p>
+
+    <script>
+        var month; //변수 선언
+        var date = 25; // 변수 선언과 동시에 초기화
+        month = 12; //변수 초기화
+        document.getElementById("date").innerHTML = 
+        "크리스마스는 " + month + "월 " + date + "일 입니다.";
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>여러 변수의 선언과 초기화</h1>
+    <p id="date1"></p>
+    <script>
+        var month, date;
+        var hours = 7, minutes = 15; // 쉼표를 통해 여러변수 동시 선언가능
+        month = 10, date = 5; // 선언된 변수 나중에 초기화 가능
+
+        document.getElementById("date1").innerHTML =
+            "이번 모임의 날짜는 " + month + "월 " + date + "일 입니다. <br>";
+        document.getElementById("date1").innerHTML +=
+            hours + "시 " + minutes + "분까지 꼭 와주세요!";
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>같은 변수에 다른 타입의 값 할당</h1>
+    <p id="result8"></p>
+
+    <script>
+        var num = 10; //변수 선언과 함께 초기화
+        document.getElementById("result8").innerHTML = num + "<br>";
+        num = [10, 20, 30]; // 배열 할당
+        document.getElementById("result8").innerHTML += num + "<br>";
+        var num; // 재 선언문 무시
+        document.getElementById("result8").innerHTML += num;
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>초기화하지 않은 변수의 값</h1>
+    <!-- 변수 선언만되고 초기화가 되지않은 변수의 값은 undefined가 됨-->
+    <p id="result9"></p>
+
+    <script>
+        var num1; // 변수 선언
+        document.getElementById("result9").innerHTML = num1 + "<br>";
+        num1 = 10; // 변수 초기화
+        document.getElementById("result9").innerHTML += num1;
+    </script>
+</body>
+</html>
+

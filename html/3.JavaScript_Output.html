@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Output</title>
+</head>
+<body>
+    <h1>Window 객체의 alert() 메소드</h1>
+    <button onclick="alertDialogBox()"> alert 대화 상자</button>
+    <script>
+        function alertDialogBox(){
+            alert("확인을 누를 때까지 다른 작업을 할 수 없어요!");
+        }
+    </script>
+
+    <h1> HTML DOM요소를 이용한 innerHTML 프로퍼티</h1>
+    <p id = "text"> 이 문장을 바꿀 것입니다!</p>
+    <script>
+        var str = document.getElementById("text");
+        str.innerHTML = "이 문장으로 바뀌었습니다.";
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1> Document 객체의 write() 메소드</h1>
+    <!-- document.write()메소드는 웹페이지 로딩 시 가장 먼저 데이터 출력-->
+    <script>
+        document.write(4 * 5);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Document 객체의 write() 메소드</h1>
+    <!-- 이 메소드 실행 시 웹페이지 내의 먼저 로딩된 모든 데이터를 지우고 자신의 데이터 출력함
+    사용 시 주의 요함-->
+    <button onclick="document.write(4 * 5)"> 버튼을 눌러보세요!</button>
+
+    <p>F12를 눌러서 콘솔 화면을 열면 결과를 확인 할 수 있습니다.</p>
+    <!-- f12를 눌러 콘솔에 찍힌 로그를 확인하자 -->
+    <script>
+        console.log(4 * 5);
+    </script>
+    
+</body>
+</html>

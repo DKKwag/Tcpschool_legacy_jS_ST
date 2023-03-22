@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Etc_Control_Statement</title>
+</head>
+<body>
+    
+    <h1> continue 문</h1>
+
+    <script>
+        var exceptNum = 3;
+
+        for (var i = 0; i <= 100; i++) {
+            if(i % exceptNum == 0)
+                continue;
+            document.write(i + " ");
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>continue 문</h1>
+
+    <script>
+        gugudan:
+        for ( var i = 2; i <= 9; i++) {
+            dan:
+            for(var j = 1; j <= 9; j++) {
+                if((i*j) % 2 == 0)
+                    continue dan;
+                document.write(i + " * " + j + " = " + (i * j) + "<br>");
+            }
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>break 문</h1>
+    <script>
+        var lectures = ["html", "css", "자바스크립트", "php"];
+        var topic = "php";
+
+        for(var i = 0; i < lectures.length; i++) {
+            if (lectures[i] == topic) {
+                document.write(topic + " 과목은 " + (i + 1) + "번째 과목입니다.");
+                break; //원하는 값을 찾은 후 더 이상 for문 반복하지 않음
+            }
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>break 문</h1>
+
+    <script>
+        gugudan:
+        for(var i = 0; i <= 9; i++) {
+            dan:
+            for ( var j = 0; j <= 9; j++) {
+                if(i > 3)
+                    break gugudan;
+                document.write(i + " * " + j + " = " + (i*j) + " <br> ");
+            }
+        }
+    </script>
+</body>
+</html>

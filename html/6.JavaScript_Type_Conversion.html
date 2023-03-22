@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.JavaScript_Type_Conversion</title>
+</head>
+<body>
+    <h1> 같은 변수에 다른 타입의 값 대입</h1>
+    <!-- 자바 스크립트는 타입이 정해져있지 않으며, 같은 변수에 다른 타입의 값을 다시 대입 가능-->
+    <p id="result"></p>
+    
+    <script>
+        var num = 20;
+        document.getElementById("result").innerHTML = num + "<br>";
+        num = "이십";
+        document.getElementById("result").innerHTML += num + "<br>";
+        var num; // 변수에 여러번 대입 가능하지만 재선언언문은 무시
+        document.getElementById("result").innerHTML += num;
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>묵시적 타입 변환</h1>
+    <!-- 자바스크립트는 자동으로 타입을 변환하여 사용한다. -->
+    <p id="result2"></p>
+
+    <script>
+        var result2 = 10 + "문자열"; //숫자10이 문자열로 변환됨
+        document.getElementById("result2").innerHTML = result2 + "<br>";
+        result2 = "3" * "5"; //곱셉 연산을 위해 두 문자열이 숫자로 변환
+        document.getElementById("result2").innerHTML += result2 + "<br>";
+        result2 = 1 - "문자열";
+        document.getElementById("result2").innerHTML += result2;
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>명시적 타입 변환 함수</h1>
+    <!-- null, undefined를 제외한 모든 타입의 값이 가지고 있는 toString()메소드를 사용할 수 있다.
+    숫자 객체는 숫자를 문자열로 변환하는 다음과 같은 메소드를 별도로 제공한다.
+    1. toExponential() : 정수 부분은1자리, 소수 부분은 입력반은 수만큼 e표기법 을 사용하여 숫자를 문자열로 변환
+    2. toFixed() : 소수 부분을 입력받은 수만큼 사용하여 숫자를 문자열로 변환
+    3. toPrecision() : 입력받은 수만큼 유효 자릿수를 사용하여 숫자를 문자열로 변환-->
+    <p id="result3"></p>
+
+    <script>
+        document.getElementById("result3").innerHTML = Number("10") + "<br>";
+        document.getElementById("result3").innerHTML += String(true) + "<br>";
+        document.getElementById("result3").innerHTML += Boolean(0) + "<br>";
+        document.getElementById("result3").innerHTML += Object(3) + "<br>";
+    </script>
+
+    
+    <h1>----------------------------------------------------</h1>
+
+    <!-- 날짜를 문자열이나 숫자로 변환
+        1. getDate() : 날짜 중 일자를 숫자로 반환 (1 ~ 31)
+        2. getDay() : 날짜 중 요일을 숫자료 반환(일요일 : 0 ~ 토요일 : 6)
+        3. getFullYear() : 날짜 중 연도를 4자리 숫자로 반환(yyyy년)
+        4. getMonth() : 날짜 중 월을 숫자로 반환( 1월: 0 ~ 12월 : 11)
+        5. getTime() : 1970년 1월 1일 부터 현재까지의 시간을 밀리초 단위의 숫자로 반환
+        6. getHours() : 시간 중 시를 숫자로 반환( 0 ~ 23)
+        7. getMinutes() : 시간 중 분을 숫자로 반환( 0 ~ 59 )
+        8. getSeconds() : 시간중 초를 숫자로 반환 ( 0 ~ 59 )
+        9. getMilliseconds() : 시간 중 초를 밀리초 단위의 숫자로 반환( 0 ~ 999)
+    -->
+    <h1>날짜를 문자열이나 숫자로 변환</h1>
+    <p id="result7"></p>
+
+    <script>
+        var result7 = String(Date());
+        document.getElementById("result7").innerHTML = result7 + "<br>";
+        result7 = Date().toString();
+        document.getElementById("result7").innerHTML += result7 + "<br>";
+        var date = new Date(); //Date 객체 생성
+        result7 = date.getFullYear();
+        document.getElementById("result7").innerHTML += result7 + "<br>";
+        result7 = date.getTime();
+        document.getElementById("result7").innerHTML += result7 + "<br>";
+    </script>
+
+    <!-- 문자열을 숫자로 변환 
+    1. parseInt() : 문자열을 파싱하여 특정 진법의 정수를 반환
+    2. parseFloat() : 문자열을 파싱하여 부동 소수점 수를 반환
+    -->
+</body>
+</html>
