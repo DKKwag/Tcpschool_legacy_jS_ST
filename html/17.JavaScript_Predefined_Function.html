@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Predefined_Function</title>
+</head>
+<body>
+    <!-- **참고사항**
+    미리 정의된 전역 함수(predefined functions)
+    1. eval() : 문자열로 표현된 자바스크립트 코드를 실행하는 함수
+    2. isFinite() : 전달된 값이 유한한 수인지 검사 후 그 결과를 반환, 만약 인수로 전달된 값이 숫자가 아니라면 숫자로 변환하여 검사
+    3. isNaN() : 전달된 값이 NaN인지를 검사하여 그 결과를 반환, 만약 인수로 전달된 값이 숫자가 아니라면 숫자로 강제 변환하여 검사
+    4. parseFloat() : 문자열을 파싱하여 부동소수점 수로 반환
+    5. parseInt() : 문자열을 파싱하여 정수로 반환
+    6. decodeURI() : encodeURI() 함수나 다른방법으로 만들어진 URI를 해독
+    7. decodeURIComponent() : decodeURIComponent() 함수나 다른방법으로 만들어진 URI컴포넌트를 해독
+    8. encodeURI() : URI에서 주소를 표시하는 특수문자를 제외하고, 모든 문자를 이스케이프 시퀀스로 처리하여 부호화
+    9. encodeURIComponent() : URI에서 encodeURI() 함수에서 부호화하지 않은 모든 문자까지 포함하여 이스케이프 시퀀스 처리
+    10. escape() : 전달받은 문자열에서 특정 문자들을 16진법 이스케이프 시퀀스 문자로 변환
+    11. unescape() : 전달받은 문자열에서 escape() 함수나 다른 방법으로 만들어진 16진법 이스케이프 시퀀스 문자를 원래 문자로 변환
+    12. Number() : 전달받은 객체의 값을 숫자로 반환
+    13. String() : String : 전달받은 객체의 값을 문자열로 반환
+    -->
+    
+    <h1>eval() 함수</h1>
+    <script>
+        var x = 10, y = 20;
+        var a = eval("x + y");
+        var b = eval("y * 3");
+        document.write(a + "<br>" + b);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>isFinite() 함수</h1>
+    <script>
+        document.write(isFinite(123) + "<br>");
+        document.write(isFinite(123e100) + "<br>");
+        document.write(isFinite(0) + "<br>");
+        document.write(isFinite(true) + "<br>");
+        document.write(isFinite(false) + "<br>");
+        document.write(isFinite(null) + "<br>");
+        document.write(isFinite("123") + "<br>");
+        document.write(isFinite("문자열") + "<br>");
+        document.write(isFinite(undefined) + "<br>");
+        document.write(isFinite(NaN) + "<br>");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    <h1>isNaN() 함수</h1>
+
+    <script>
+        document.write(isNaN(123) + "<br>");
+        document.write(isNaN(123e100) + "<br>");
+        document.write(isNaN(0) + "<br>");
+        document.write(isNaN(true) + "<br>");
+        document.write(isNaN(false) + "<br>");
+        document.write(isNaN(null) + "<br>");
+        document.write(isNaN("123") + "<br>");
+        document.write(isNaN("문자열") + "<br>"); //true
+        document.write(isNaN(undefined) + "<br>"); //true
+        document.write(isNaN(NaN) + "<br>"); //true
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>parseFloat() 함수</h1>
+    <!-- 문자열을 파싱하여 부동소수점 수로 반환 -->
+    <script>
+        document.write(parseFloat("123") + "<br>"); 
+        document.write(parseFloat("123.000") + "<br>"); 
+        document.write(parseFloat("123.456") + "<br>"); 
+        document.write(parseFloat("12 34 56") + "<br>"); 
+        document.write(parseFloat("  123  ") + "<br>"); 
+        document.write(parseFloat("123 초콜릿") + "<br>"); 
+        document.write(parseFloat("초콜릿 123") + "<br>"); 
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>parseInt() 함수</h1>
+    <!-- 문자열을 파싱하여 정수로 반환 -->
+    <script>
+        document.write(parseInt("123") + "<br>");
+        document.write(parseInt("123.000") + "<br>");
+        document.write(parseInt("123.456") + "<br>");
+        document.write(parseInt("12 34 56") + "<br>");
+        document.write(parseInt("  123  ") + "<br>");
+        document.write(parseInt("123 초콜릿") + "<br>");
+        document.write(parseInt("초콜릿 123") + "<br>");
+
+        document.write(parseInt("10", 10) + "<br>");
+        document.write(parseInt("10", 8) + "<br>");
+        document.write(parseInt("10", 16) + "<br>");
+        document.write(parseInt("0x10") + "<br>");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>encodeURI()와 encodeURIComponent() 함수</h1>
+
+    <script>
+        var uri = "http://google.com/search.php?name=홍길동&city=서울";
+        var enc1 = encodeURI(uri) ;
+        var enc2 = encodeURIComponent(uri);
+        document.write(enc1 + "<br>" + enc2);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    
+    <h1>decodeURI()와 decodeURIComponent() 함수</h1>
+
+    <script>
+        var uri = "http://google.com/search.php?name홍길동&city=서울"
+        var enc1 = encodeURI(uri);
+        var enc2 = encodeURIComponent(uri);
+        document.write(enc1 + "<br>" + enc2 + "<br><br>");
+
+        var dec1 = decodeURI(enc1);
+        var dec2 = decodeURIComponent(enc2);
+        document.write(dec1 + "<br>" + dec2);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>escape()와 unescape() 함수</h1>
+
+    <script>
+        var str = "Hello!   World ?#$";
+        var esc = escape(str);
+        var une = unescape(esc);
+
+        document.write(esc + "<br>" + une);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Number() 함수</h1>
+
+    <script>
+        document.write(Number("123") + "<br>");
+        document.write(Number("123.000") + "<br>");
+        document.write(Number("123.456") + "<br>");
+        document.write(Number("12 34 56") + "<br>");
+        document.write(Number("123 초콜릿") + "<br>");
+        
+        document.write(Number(true) + "<br>");
+        document.write(Number(false) + "<br>");
+        document.write(Number(new Date()) + "<br>");
+        document.write((null) + "<br>");
+        
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    <h1>String() 함수</h1>
+
+    <script>
+        document.write(String(123) + "<br>");
+        document.write(String(123.456) + "<br>");
+        document.write(String("123") + "<br>");
+        document.write(String(new Date()) + "<br>");
+        document.write(String(null) + "<br>");
+    
+        document.write(String(true) + "<br>");
+        document.write(String(false) + "<br>");
+        document.write(String(Boolean(1)) + "<br>");
+        document.write(String(Boolean(0)) + "<br>");
+        
+    </script>
+</body>
+</html>

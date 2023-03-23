@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Object</title>
+</head>
+<body>
+    <h1>객체의 개념</h1>
+    <!-- 객체란 이름(name) 과 값 (value)로 구성된 프로퍼티의 정렬되지 않은 집합
+        프로퍼티의 값으로 함수가 올 수도 있느넫, 이러한 프로퍼티를 메소드라고 한다.-->
+
+    <script>
+        var cat = "나비";  //일반적인 변수 선언
+        var kitty = {name : "나비", family : "코리안 숏 헤어", age : 1, weight : 0.1}; //객체도 많은 값을 가지는 변수의 하나다.
+
+        document.write(cat + "<br>");
+        document.write(kitty.name);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>객체의 프로퍼티 참조</h1>
+
+    <script>
+        var person = {
+            name : "홍길동",    //이름 프로퍼티 정의
+            birthday : "030219",    //생일 프로퍼티 정의
+            pId : "1234567",    //개인 id프로퍼티 정의
+            fullId : function() {   //생년월일과 개인 id를 합쳐서 주민등록번호 반환
+                return this.birthday + this.pId;
+            }
+        };
+
+        document.write(person.name + "<br>"); //홍길동
+        document.write(person["name"]); //홍길동
+    </script>
+
+    <h1>객체의 메소드 참조</h1>
+
+    <script>
+        var person = {
+            name : "홍길동",
+            birthday : "030219",
+            pId : "1234567",
+            fullId : function() {
+                return this.birthday + this.pId;
+            }
+        };
+
+        document.write(person.fullId() + "<br>");
+        document.write(person.fullId);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>객체 이니셜라이저를 이용한 객체 생성</h1>
+
+    <script>
+        var kitty = {
+            name : "나비",
+            family : "코리안 숏 헤어",
+            age : 1,
+            weight : 0.1
+        };
+
+        document.write("우리 집 새끼 고양이의 이름은 " + kitty.name + "이고, 종은 " + kitty.family + "입니다.");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>생성자 함수를 이용한 객체 생성</h1>
+    <!-- new연산자를 사용하여 객체를 생성하고 초기화 할 수 있다.
+        이때 사용되는 메소드를 생성자(constructor)라고 하며, 이 메소드는 새롭게 생성되는 객체를 초기화 하는 역할을 한다.-->
+    <script>
+        var day = new Date(); //new연산자를 이용하여 Date 타입의 객체를 생성함.
+
+        document.write("올해는 " + day.getFullYear() + "년입니다.")
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Object.create() 메소드를 이용한 객체 생성</h1>
+    <!-- Object.create()메소드는 지정된 프로토타입 객체와 프로퍼티를 가지고 새로운 객체를 만들어준다.-->
+    <script>
+        var obj = Object.create(null, { //null 프로토타입을 사용하여 새로운 객체를 만든다.
+            x : {value : 100, enumerable : true}, //x좌표를 나타내는 열거 할 수 있는 속성 추가
+            y : {value : 200, enumerable : true} //y좌표를 나타내는 열거 할 수 있는 속성 추가
+        });
+
+        document.write(obj.x + "<br/>"); //x좌표
+        document.write(obj.y + "<br/>"); //y좌표
+        document.write(Object.getPrototypeOf(obj)); //객체의 포로토 타입을 반환해줌
+    </script>
+
+    
+
+</body>
+</html>

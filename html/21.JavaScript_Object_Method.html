@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Object_Method</title>
+</head>
+<body>
+    <h1>객체의 hasOwnProperty() 메소드</h1>
+    <!-- 대표적인 객체의 메소드
+        1. hasOwnProperty() : 특정 프로퍼티가 객체에 존재하는지 검사
+        2. propertyIsEnumerable() : 특정 프로퍼티가 해당 객체에 존재하고, 열거할 수 있는 프로퍼티인지 검사
+        3. isPrototypeOf() : 특정 프로토타입 체인에 현재 객체가 존재하는지 검사
+        4. isExtensible() : 객체에 새로운 프로퍼티를 추가 할 수 있는지 여부 반환(preventExtensions()메소드를 사용해서 새로운 프로퍼티 추가 못하도록 막을 수 있음)
+        5. toString() : 객체의 값을 문자열로 반환
+        6. valueOf() : 원시 타입의 값을 반환(원시타입의 값을 가지고있지 않다면 이메소드는 객체 자신을 반환)
+    -->
+
+    <script>
+        function Dog(color, name, age, family ){
+            this.color = color;
+            this.name = name;
+            this.age = age;
+            this.family = family;
+            this.breed = function() { return this.color + " " + this.family;}
+        }
+
+        var myDog = new Dog("검정색", "곰", 3, "불독");
+
+        document.write(myDog.hasOwnProperty("color") + "<br>"); //true
+        document.write(myDog.hasOwnProperty("breed") + "<br>"); //true
+        document.write(myDog.hasOwnProperty("class")); //false
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>객체의 propertyEnumerable() 메소드</h1>
+
+    <script>
+        function Dog(color, name, age) {
+            this.color = color;
+            this.name = name;
+            this.age = age;
+        }
+        var myDog = new Dog("흰색", "마루", 1);
+        
+        Object.defineProperty(myDog, 'color', {enumerable : false});
+
+        document.write(myDog.propertyIsEnumerable("color") + "<br>");   //false
+        document.write(myDog.propertyIsEnumerable("name") + "<br>");    //true 
+        document.write(myDog.propertyIsEnumerable("age"));  //true
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>객체의 isPrototypeOf() 메소드</h1>
+
+    <script>
+        var day = new Date();
+
+        document.write(Date.prototype.isPrototypeOf(day) + "<br>"); //true
+        document.write(Date.prototype.isPrototypeOf(new String())); //false
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>객체의 isExtensible() 메소드</h1>
+
+    <script>
+        var day = new Date();
+
+        document.write(Object.isExtensible(day) + "<br>");
+
+        var myDay = Object.preventExtensions(day);
+        document.write(Object.isExtensible(day));
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    
+    <h1>객체의 toString() 메소드</h1>
+
+    <script>
+        var arr = [10, "문자열", true];
+        var bool = false;
+        function func() {
+            return 0;
+        }
+
+        document.write(arr.toString() + "<br>");
+        document.write(bool.toString() + "<br>");
+        document.write(func.toString());
+    </script>
+    
+    <h1>----------------------------------------------------</h1>
+
+    <h1>객체의 valueOf() 메소드</h1>
+
+    <script>
+        function func(n) {
+            this.number = n;
+        }
+
+        myFunc = new func(4);
+        document.write(myFunc + 5);
+
+        func.prototype.valueOf = function() {
+            return this.number;
+        }
+        document.write("<br><br>");
+        document.write(myFunc + 5);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>getter 메소드</h1>
+
+    <script>
+        var gildong = {age : 18};
+        document.write(gildong.age + "<br>");
+
+        Object.defineProperty(gildong, "americanAge", {get : function() {return this.age -1;}});
+        document.write(gildong.americanAge);
+
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>setter 메소드</h1>
+
+    <script>
+        var gildong = {age : 18};
+
+        gildong.age = 20;
+        document.write(gildong.age + "<br>");   //20
+
+        Object.defineProperty(gildong, "changeAge", {set : function(n) { this.age = this.age -n;}});
+        gildong.changeAge = 5;
+        document.write(gildong.age); //15
+    </script>
+</body>
+</html>
