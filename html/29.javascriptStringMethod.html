@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptStringMethod</title>
+</head>
+<body>
+    <!--
+        1. String.fromCharCode() : 쉼표로 구분 되는 일련의 유니코드에 해당되는 문자들로 구성된 문자열 반환
+        2. String.fromCodePoint() : 쉼표로 구분 되는 일련의 코드 포인트(code Point)에 해당되는 문자들로 구성된 문자열 반환
+    -->
+    <h1>String.fromCharCode() 메소드</h1>
+    
+    <script>
+        var Stringout = String.fromCharCode(65, 66, 67)
+        document.write(Stringout);
+    </script>
+
+    <h1>String.fromCodePoint() 메소드</h1>
+    
+    <script>
+        var Stringout = String.fromCodePoint(65, 66, 67);
+        document.write(Stringout + "<br>");
+        var Stringout1 = String.fromCodePoint(0x2F804);
+        document.write(Stringout1 + "<br>");
+        var Stringout2 = String.fromCodePoint(194564);
+        document.write(Stringout2 + "<br>");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    
+    <!--
+        String.prototype 메소드
+
+        1. 문자열에서의 위치반환
+        2. 문자열에서 지정된 위치에 있는 문자반환
+        3. 문자열 추출
+        4. 문자열 분리
+        5. 문자열 결합
+        6. 문자열의 대소문자 변환
+        7. 문자열 주위의 공백 제거
+        8. 정규 표현식을 이용한 문자열 조작
+    -->
+    <h1>문자열에서의 위치 찾기</h1>
+    <!-- 
+        특정 문자나 문자열이 처음으로 등장하는 위치나 마지막으로 등장하는 위치 반환
+        indexOf, lastIndexOf 메소드들은 문자열을 찾기 시작할 String 인스턴스의 위치를 두 번째 인수를 전달 할 수있다.
+        전달받을 특정 문자나 문자열을 찾을 수 없을 때는 -1 반환
+    -->
+    <script>
+        var str = "abcDEFabc";
+
+        document.write(str.indexOf('abc') + "<br>");    //0
+        document.write(str.indexOf('abcd') + "<br>");   //-1
+        document.write(str.indexOf('abc', 3) + "<br><br>"); //6
+
+        document.write(str.lastIndexOf('abc') + "<br>");    //6
+        document.write(str.lastIndexOf('d') + "<br>");  //-1
+        document.write(str.lastIndexOf('c'));   //8
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>문자열에서 지정된 위치에 있는 문자 반환</h1>
+    <!--
+        String 인스턴스에서 전달받은 인덱스에 위치한 문자나 문자 코드를 반환
+        charAt(), charCodeAt(), charPointAt()
+    -->
+
+    <script>
+        var str = "abcDEFabc";
+
+        document.write(str.charAt(0) + "<br>"); //a
+        document.write(str.charAt(10) + "<br>");    //빈문자열 -> 전달받은 인덱스가 문자열의 길이보다 클 경우 빈문자열 반환
+        document.write(str.charCodeAt(0) + "<br>"); //97 - 'a'에 해담ㅇ하는 UTF-16 코드 반환
+        document.write(str.codePointAt(0)); //97 - 'a'에 해당하는 유니코드 코드 포인트 반환
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>문자열 추출</h1>
+
+    <!-- 
+        전달 받은 시작 인덱스부터 종료 인덱스 바로 앞 까지의 문자열만을 추출하여 만든 새로운 문자열 반환
+        slice(), substring(), substr()
+    -->
+    <script>
+        var str = "abcDEFabc";
+
+        document.write(str.slice(2, 6) + "<br>");   //cDEF -> 인덱스 2부터 인덱스 5까지의 문자열 추출
+        document.write(str.slice(-4, -2) + "<br>"); //Fa -> 음수로 전달된 인덱스는 문자열 뒤에서부터 시작
+        document.write(str.slice(2) + "<br>");  //cDEFabc -> 종료 인덱스가 전달되지 않으면 문자열의 마지막 까지 추출
+
+        document.write(str.substring(2, 6) + "<br>"); //cDEF
+        document.write(str.substr(2, 4));   //cDEF
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>문자열 분리</h1>
+    <!--
+        구분자(separator)를 기준으로 나눈 후, 나뉜 문자열을 하나의 배열로 반환
+        split()
+    -->
+    <script>
+        var str = "자바스크립트는 너무 멋져요! 그리고 유용해요.";
+
+        document.write(str.split() + "<br>");   //구분자를 명시하지 않으면 아무런 동작도 하지 않음
+        document.write(str.split("") + "<br>"); // 한 문자("")씩 나눔
+        document.write(str.split(" ") + "<br>"); //띄어쓰기(" ")를 기준으로 나눔
+        document.write(str.split("!")); //"느낌표("!")를 기준으로 나눔
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>문자열 결합</h1>
+    <!-- 
+        전달 받은 문자열을 결합한 새로운 문자열 반호나
+        concat()
+    -->
+
+    <script>
+        var str = "자바스크립트";
+
+        document.write(str + "<br>");
+        document.write(str.concat("는 너무 멋져요!") + "<br>");
+        document.write(str.concat("는 너무 멋져요!", " 그리고 유용해요!" + "<br>"));
+        document.write(str);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>문자열의 대소문자 변환</h1>
+    <!--
+        모든 문자를 대문자나 소문자로 변환한 새로운 문자열 반환
+        toUpperCase(), toLowerCase()
+    -->
+
+    <script>
+        var str = "JavaScript";
+
+        document.write(str.toUpperCase() + "<br>"); //JAVASCRIPT
+        document.write(str.toLowerCase()); //javascript
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>문자열 주위의 공백 제거</h1>
+
+    <script>
+        var str = "        JavaScript";
+        document.write(str.trim());
+    </script>
+
+</body>
+</html>

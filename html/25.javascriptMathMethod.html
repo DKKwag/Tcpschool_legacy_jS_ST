@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptMathMethod</title>
+</head>
+<body>
+    <!-- 
+        다양한 수학적 작업을 손쉽게 할 수 있도록 Math메소드를 제공한다.
+        가장 대표적인 Math 메소드
+        1. Math.min() : 인수로 전달받은 값 중에서 가장 작은수를 반환(인수가 전달되지 않을 시 : Infinity, 인수중에 비교할 수 없는 값이 포함되어있으면 : NaN)
+        2. Math.max() : 인수로 전달받은 값 중에서 가장 큰 수를 반환(인수가 전달되지 않을 시 : -Infinity, 인수중에 비교할 수 없는 값이 포함되어있으면 : NaN)
+        3. Math.random() : 0보다 크거나 같고 1보다 작은 무작위 숫자(random number)를 반환
+        4. Math.round() : 인수로 전달받은 값을 소수점 첫 번째 자리에서 반올림하여 그 결과값 반환
+        5. Math.floor() : 인수로 전달받은 값과 같거나 작은 수 중에서 가장 큰 정수 반환
+        6. Math.ceil() : 인수로 전달받은 값과 같거나 큰 수 중에서  가장 작은정수 반환
+        7. Math.sin() : 인수로 전달받은 값의 사인(sine) 함수 값을 반환
+    -->
+
+    <h1>Math.min() 메소드</h1>
+
+    <script>
+        document.write(Math.min() + "<br>"); //인수가 전달되지 않음 Infinity
+        document.write(Math.min(1, 10, -100, -10, 1000, 0) + "<br>"); // -100
+        document.write(Math.min(1, 10, -100, -10, "-1000", 0) + "<br>"); // -1000
+        document.write(Math.min(1, 10, -100, -10, "문자열", 0)); // 인수중 비교할 수 없는값 포함 NaN
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Math.max() 메소드</h1>
+
+    <script>
+        document.write(Math.max() + "<br>"); //인수가 전달되지 않음 -Infinity
+        document.write(Math.max(1, 10, -100, -10, 100, 0) + "<br>"); // 100
+        document.write(Math.max(1, 10, -100, -10, "1000", 0) + "<br>"); //1000
+        document.write(Math.max(1, 10, -100, -10, "문자열", 0)); // 인수 중 비교할 수 없는 값 포함 NaN
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Math.random() 메소드</h1>
+
+    <script>
+        var min = 10, max = 20;
+        document.write(Math.random() + "<br>");
+        document.write(Math.random() * (max - min) + min);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Math.round() 메소드</h1>
+
+    <script>
+        document.write(Math.round(10.49) + "<br>");
+        document.write(Math.round(10.5) + "<br>");
+        document.write(Math.round(-10.5) + "<br>");
+        document.write(Math.round(-10.51));
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Math.floor() 메소드</h1>
+
+    <script>
+        document.write(Math.floor(10.95) + "<br>");
+        document.write(Math.floor(11.01) + "<br>");
+        document.write(Math.floor(-10.95) + "<br>")
+        document.write(Math.floor(-11.01));
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Math.ceil() 메소드</h1>
+
+    <script>
+        document.write(Math.ceil(10.95) + "<br>");
+        document.write(Math.ceil(11.01) + "<br>");
+        document.write(Math.ceil(11) + "<br>");
+        document.write(Math.ceil(-10.95) + "<br>");
+        document.write(Math.ceil(-11.01));
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>Math.sin() 메소드</h1>
+
+    <script>
+        document.write(Math.sin(0) + "<br>");
+        document.write(Math.sin(Math.PI / 2));
+    </script>
+</body>
+</html>
