@@ -1,0 +1,31 @@
+문서 객체 모델(DOM)
+    - HTML 문서에 접근하기 위한 일종의 인터페이스
+    - 문서 내의 모든 요소를 정의, 각각의 요소에 접근하는 방법 제공
+
+    1. 새로운 HTML 요소나 속성을 추가 가능
+    2. 존재하는 HTML 요소나 속성을 제거 가능
+    3. HTML 문서의 모든 HTML 요소 변경 가능
+    4. HTML 문서의 모든 HTML 속성 변경 가능
+    5. HTML 문서의 모든 CSS 스타일 변경 가능
+    6. HMTL 문서에 새로운 HTML 이벤트 추가 가능
+    7. HTML 문서의 모든 HTML 이벤트 반응 가능
+
+DOM 종류
+    1. Core DOM : 모든 문서 타입을 위한 DOM모델
+    2. HTML DOM : HTML 문서를 위한 DOM 모델
+    3. XML DOM : XML문서를 위한 DOM모델
+
+Document 객체
+    - 웹 페이지 그 자체를 의미한다.
+
+HTML 요소를 선택하기 위한 메소드
+    1. document.getElementsByTagName(태그이름) : 해당 태그 이름의 요소를 모두 선택
+    2. document.getElementById(아이디) : 해당 아이디의 요소를 선택
+    3. document.getElementsByClassName(클래스 이름) : 해당 클래스에 속한 요소 모두 선택
+    4. document.getElementsByName(name 속성 값) : 해당 name 속성값을 가지는 요소를 모두 선택
+    5. document.querySelectorAll(선택자) : 해당 선택자로 선택되는 요소를 모두 선택
+
+HTML 이벤트 핸들러 추가
+    - HTML 요소에 이벤트 핸들러를 추가하기 위해 제공되는 메소드
+    - document.getElementById(아이디).onclick = function(){실행할 코드} : 마우스 클릭 이벤트와 연결될 이벤트 핸들러 코드를 추가
+    

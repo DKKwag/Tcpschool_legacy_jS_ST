@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptNodeAccess</title>
+</head>
+<body>
+    <h1>nodeName 프로퍼티</h1>
+    <p id="document"></p>
+    <p id="html"></p>
+
+    <script>
+        // HTML 문서의 모든 자식 노드 중에서 두 번째 노드의 이름을 선택
+        document.getElementById("document").innerHTML = document.childNodes[1].nodeName; //HTML
+
+        // html 노드의 모든 자식 노드 중에서 첫 번째 노드의 이름을 선택
+        // html 노드의 첫 번째 자식은 <head>, 세 번째 자식 노드는 <body>
+        document.getElementById("html").innerHTML = document.childNodes[1].childNodes[0].nodeName //HEAD
+    </script>
+    
+    <h1>----------------------------------------------------</h1>
+
+    <h1 id="heading">nodeValue 프로퍼티</h1>
+    <p id="text1">텍스트</p>
+    <p id="text2">텍스트</p>
+
+    <script>
+        //아이디가 "heading"인 요소의 첫 번재 자식 노드의 노드값을 선택
+        var headingText = document.getElementById("heading").firstChild.nodeValue;
+
+        document.getElementById("text1").innerHTML = headingText;
+        document.getElementById("text2").firstChild.nodeValue = headingText;
+        
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1 id="heading">nodeType 프로퍼티</h1>
+    <p id="head"></p>
+    <p id="document1"></p>
+
+    <script>
+        //아이디가 "heading"인 요소의 첫 번째 자식 노드의 타입을 선택
+        var headingType = document.getElementById("heading").firstChild.nodeType;
+
+        document.getElementById("head").innerHTML = headingType;
+        document.getElementById("document1").innerHTML = document.nodeType;
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>빈 텍스트 노드의 처리</h1>
+
+    <div id="parentNode">
+        <p><span>첫 번째 단락</span>입니다.</p>
+        <p>두 번째 단락 입니다.</p>
+    </div>
+    <button onclick="printLastChild()">마지막 자식 노드 찾기!</button>
+    <p id="nodename"></p>
+
+    <script>
+        var lastNode;
+        function findLastChild(parentNode) {
+            lastNode = parentNode.lastChild;
+            while (lastNode.nodeType != 1) {
+                lastNode = lastNode.previousSibling;
+            }
+        }
+        function printLastChild() {
+            var parentNode = document.getElementById("parentNode");
+            findLastChild(parentNode);
+            document.getElementById("nodename").innerHTML = lastNode.nodeName;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptDomElement</title>
+</head>
+<body>
+    <h1>HTML 태그 이름을 이용한 선택</h1>
+
+    <ul>
+        <li>첫 번째 아이템이에요!</li>
+        <li>두 번째 아이템이에요!</li>
+        <li>세 번째 아이템이에요!</li>
+        <li>네 번째 아이템이에요!</li>
+        <li>다섯 번째 아이템이에요!</li>
+    </ul>
+
+    <!-- item()메소드는 해당 HTML 객체 집합에서 전달받은 인덱스에 해당하는 요소를 반환-->
+    <script>
+        var selectedItem = document.getElementsByTagName("li"); //모든 <li> 요소를 선택
+        for (var i = 0; i < selectedItem.length; i++) {
+            selectedItem.item(i).style.color = "red";   //선택된 모든 요소의 텍스트 색상을 변경
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>아이디를 이용한 선택</h1>
+    
+    <ul>
+        <li>첫 번째 아이템이에요!</li>
+        <li id="even">두 번째 아이템이에요!</li>
+        <li>세 번째 아이템이에요!</li>
+        <li id="even">네 번째 아이템이에요!</li>
+        <li>다섯 번째 아이템이에요!</li>
+    </ul>
+    <script>
+        var selectedItem = document.getElementById("even"); //아이디가 "even"인 요소를 선택
+        selectedItem.style.color = "red";       //해당된 아이디를 가지고있는 요소에 컬러를 부여하는데, 첫번째 요소에만 부여한다.
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>클래스를 이용한 선택</h1>
+
+    <ul>
+        <li class="odd">첫 번째 아이템이에요!</li>
+        <li>두 번째 아이템이에요!</li>
+        <li class="odd">세 번째 아이템이에요!</li>
+        <li>네 번째 아이템이에요!</li>
+        <li class="odd">다섯 번째 아이템이에요!</li>
+    </ul>
+    <script>
+        var selectedItem = document.getElementsByClassName("odd");  //클래스가 "odd"인 모든 요소 선택
+        for ( var i = 0; i < selectedItem.length; i++) {
+            selectedItem.item(i).style.color = "red";   //선택된 모든 요소의 텍스트 색상 변경
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>name 속성을 이용한 선택</h1>
+
+    <p name="first"> 첫 번째 단락이에요!</p>
+    <ul>
+        <li name="first">첫 번째 아이템이에요!</li>
+        <li>두 번째 아이템이에요!</li>
+        <li>세 번째 아이템이에요!</li>
+        <li>네 번째 아이템이에요!</li>
+        <li>다섯 번째 아이템이에요!</li>
+    </ul>
+
+    <script>
+        var selectedItem = document.getElementsByName("first"); //name 속성값이 "first"인 모든 요소를 선택
+        for(var i = 0; i < selectedItem.length; i++) {
+            selectedItem.item(i).style.color = "red";   //선택된 모든 요소의 텍스트 색상을 변경
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>CSS선택자를 이용한 선택</h1>
+
+    <p class="odd">첫 번째 단락이에요!</p>
+    <ul>
+        <li class="odd">첫 번째 아이템이에요!</li>
+        <li>두 번째 아이템이에요!</li>
+        <li class="odd">세 번째 아이템이에요!</li>
+        <li>네 번째 아이템이에요!</li>
+        <li class="odd">다섯 번째 아이템이에요!</li>
+    </ul>
+
+    <script>
+        var selectedItem = document.querySelectorAll("li.odd"); //클래스가"odd"인 요소 중 <li>요소만을 선택
+        for (var i = 0; i < selectedItem.length; i++) {
+            selectedItem.item(i).style.color = "red";   //선택된 모든 요소의 텍스트 색상 변경
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>HTML 객체 집합을 이용한 선택</h1>
+
+    <script>
+        var title = document.title; //<title>요소를 선택함
+        document.write(title);
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>innerHTML을 이용한 요소의 내용 변경</h1>
+    <p id="text">이 문장을 바꿀 것입니다.!</p>
+
+    <script>
+        var str = document.getElementById("text");
+        str.innerHTML = "이 문장으로 바뀌었습니니다."
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>속성 이름을 이용한 속성값 변경</h1>
+    <a id="link" href="http://tcpschool.com/html/intro">HTML 수업 바로가기!</a><br><br>
+    <button onclick="changeLink()">자바스크립트 수업으로 바꾸기!</button>
+
+    <script>
+        function changeLink() {
+            var link = document.getElementById("link"); //아이디가 'link'인 요소를 선택
+            link.href = "http://tcpschool.com/javascript/intro";    //해당 요소의 href속성값을 변경
+            link.innerHTML = "자바스크립트 수업 바로가기!"; //해당 요소의 내용을 변경
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>DOM 요소의 스타일 변경</h1>
+    <p id="text1">이 문자열의 기본색은 검정색입니다!</p>
+    <button onclick="changeRedColor()">빨간색 글자!</button>
+    <button onclick="changeBlackColor()">검정색 글자!</button>
+
+    <script>
+        var str = document.getElementById("text1"); //아이디가 text1인 요소 선택
+        function changeRedColor() {
+            str.style.color = "red";    //해당 요소의 글자 빨간색으로 변경
+        }
+        function changeBlackColor() {
+            str.style.color = "black"   //해당 요소의 글자 검정색으로 변경
+        }
+    </script>
+</body>
+</html>
