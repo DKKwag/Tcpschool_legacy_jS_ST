@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptBOMLocationObject</title>
+</head>
+<body>
+    <h1>현재 문서의 URL주소</h1>
+
+    <script>
+        document.write("현재 문서의 URL 주소는 " + location.href + "입니다.");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>현재 문서의 호스트 이름</h1>
+
+    <script>
+        document.write("현재 문서의 호스트 이름은 " + location.hostname + "입니다.");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>현재 문서의 파일 경로명</h1>
+
+    <script>
+        document.write("현재 문서의 파일 경로명은 " + location.pathname + "입니다.");
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+    
+    <h1>현재 창에 문서 불러오기</h1>
+    <!--
+        assign() 메소드는 브라우저 창에 지정된 URL주소에 존재하는 문서를 불러온다.
+        replace() 메소드는 새 문서를 불러오기 전에, 현재 문서를 브라우저의 히스토리에서 제거한다는 점이 assign()메소드와 다르다.
+    -->
+    <p>아래 버튼을 눌러 새로운 문서를 연 후에 브라우저의 뒤로 가기 버튼을 눌러보세요!</p>
+    <button onclick="openDocument()">새로운 문서 열기</button>
+    <button onclick="openDocumentWithReplace()">이전 문서 삭제 후 새로운 문서 열기</button>
+
+    <script>
+        function openDocument() {
+            location.assign("/index.php");
+        }
+        function openDocumentWithReplace()  {
+            location.replace("/index.php");
+        }
+    </script>
+</body>
+</html>

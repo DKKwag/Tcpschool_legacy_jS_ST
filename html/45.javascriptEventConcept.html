@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptEventConcept</title>
+</head>
+<body>
+    <!--
+        이벤트(evnet) - 웹 브라우저가 알려주는 HTML요소에 대한 사건의 발생
+        클라이언트 측 자바스크립트를 비동기식 이벤트 중심(event-driven)의 프로그래밍 모델
+
+    -->
+    <h1>이벤트 타입</h1>
+    <p onclick="changeText(this)">이 문자열을 클릭해 보세요!</p>
+
+    <script>
+        function changeText(element) {
+            element.innerHTML = "문자열의 내용이 바뀌었습니다.";
+        }
+    </script>
+
+</body>
+</html>

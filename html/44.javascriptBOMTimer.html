@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptBOMTimer</title>
+</head>
+<body>
+    <!--
+        일정 시간이 지난 뒤에 함수를 호출 할 수 있도록 메소드 제공
+            1. setTimeout()
+            2. setInterval()
+        설정된 함순의 호출을 취소할 수 있도록 메소드 제공
+            1. clearTimeout()
+            2. clearInterval()
+    -->
+    <h1>setTimeout() 메소드</h1>
+    <!--
+        setTimeout()메소드는 명시된 시간이 지난 뒤에 지정된 함수 호출 가능
+        window.setTimeout(호출할 함수, 지연시간);
+    -->
+    <button onclick="startTimeout()">2초 뒤에 현재 시간을 표시합니다!</button>
+    <p id="date"></p>
+
+    <script>
+        function startTimeout() {
+            setTimeout(printCurrentDate, 2000);
+        }
+        function printCurrentDate() {
+            document.getElementById("date").innerHTML = new Date();
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>setInterval() 메소드</h1>
+    <!--
+        지정된 시간 간격마다 지정된 함수를 반복적으로 호출
+    -->
+    <button onclick="startInterval()">2초마다 현재 시간을 표시합니다!</button>
+    <p id="date1"></p>
+
+    <script>
+        function startInterval() {
+            setInterval(printCurrentDate, 2000);
+        }
+        function printCurrentDate() {
+            document.getElementById("date1").innerHTML += new Date() + "<br>";
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>clearTimeout() 메소드</h1>
+    <button onclick="startTimeout2()">2초 뒤에 현재 시간을 표시합니다!</button>
+    <button onclick="cancelTimeout2()">시간 표시 취소!</button>
+    <p id="date2"></p>
+
+    <script>
+        var timeoutId;
+        function startTimeout2() {
+            timeoutId = setTimeout(printCurrentDate, 2000);
+        }
+        function cancelTimeout2()    {
+            clearTimeout(timeoutId);
+        }
+        function printCurrentDate() {
+            document.getElementById("date2").innerHTML += new Date() + "<br>";
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>setInterval() 메소드</h1>
+    <!--
+        setInterval()메소드의 반환 값을 clearInterval() 메소드의 인수로 전달하면,
+        반복되는 함수의 호출을 취소 할 수 있다.
+    -->
+    <button onclick="startInterval3()">2초마다 현재 시간을 표시</button>
+    <button onclick="cancelInterval3()">시간 갱신 중지!</button>
+    <p id="date3"></p>
+
+    <script>
+        var timeoutId;
+        function startInterval3() {
+            timeoutId = setInterval(printCurrentDate, 2000);
+        }
+        function cancelInterval3() {
+            clearInterval(timeoutId);
+        }
+        function printCurrentDate() {
+            document.getElementById("date3").innerHTML += new Date() + "<br>";
+        }
+    </script>
+
+</body>
+</html>
