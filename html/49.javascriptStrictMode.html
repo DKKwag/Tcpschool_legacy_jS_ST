@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptStrictMode</title>
+</head>
+<body>
+    <!--
+        strict 모드는 자바스크립트 코드에 더욱 엄격한 오류 검사를 적용
+        'use strict'지시어를 사용하여 선언
+    -->
+    <h1>strict 모드</h1>
+    <p id="text"></p>
+
+    <script>
+        "use strict"    //전체 스크립트를 strict 모드로 설정
+        try {
+            num = 123;  //선언되지 않은 변수를 사용했으므로, 에러가 발생
+        } catch (ex) {
+            document.getElementById("text").innerHTML = ex.name + "<br>";
+            document.getElementById("text").innerHTML += ex.message;
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>블록별 strict 모드</h1>
+    <!--
+        strict 모드가 아닌 전역 영역에서는 선언되지 않은 변수를 사용해도 자동으로 전역 변수로 인식
+        하지만 strict모드로 선언된 함수 블록에서는 선언되지 않은 변수를 사용하면 오류를 발생 시킴
+        자세한 strict문법은 찾아보자
+    -->
+    <p id="noStrict"></p>
+    <p id="funcStrict"></p>
+
+    <script>
+        str = "실수!";  //선언되지 않은 변수를 사용했지만, 자동으로 전역 변수로 선언
+        document.getElementById("noStrict").innerHTML = str + "<br>";
+        function StrictBlock() {
+            "use strict"    //함수 블록만을 strict모드로 선언
+            try {
+                num = 123   //선언되지 않은 변수를 사용했으므로 에러발생
+            } catch (ex) {
+                document.getElementById("funcStrict").innerHTML = ex.name + "<br>";
+                document.getElementById("funcStrict").innerHTML += ex.message;
+            }
+        }
+        StrictBlock();
+    </script>
+    
+</body>
+</html>

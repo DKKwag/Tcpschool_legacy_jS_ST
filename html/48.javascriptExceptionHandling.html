@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascriptExceptionHandling</title>
+</head>
+<body>
+    <h1>예외 발생</h1>
+    <!--
+        throw 키워드 사용하여 예외를 발생시킬 수 있다.
+        throw 표현 식에는 예외코드를 나타내는 숫자나 오류메시지를 담고 있는 문자열, Error 객체 등이 올 수 있다.
+            1. try블록 : 맨 먼저 실행되는 코드, 발생한 예외는 catch블록에서 처리
+            2. catch블록 : try블록에서 발생한 예외 코드나, Error객체를 인수로 전달받아 처리 담당
+            3. finally 블록 : try블록에서 예외가 발생하건 안 하건 맨 마지막에 무조건 실행
+        
+        런타임 오류 발생 시 Error객체의 인스턴스가 만들어져 오류정보 저장
+    -->
+
+    <button id="throwExBtn">예외 발생</button>
+    <p id="text"></p>
+
+    <script>
+        var btn = document.getElementById("throwExBtn");
+        btn.addEventListener("click", throwEx); //선택한 요소에 click이벤트 리스너 등록
+        function throwEx() {
+            try {
+                throw new Error("직접 발생시킨 에러입니다!");   //Error 객체를 사용해 명시적으로 에러 발생
+            }catch(ex) {    //발생된 에러를 메개변수 ex로 접근
+                document.getElementById("text").innerHTML = ex.name + "<br>";   //name 프로퍼티는 에러 타입을 저장
+                document.getElementById("text").innerHTML += ex.message;        //message 프로퍼티는 에러 메세지를 저장
+            }
+        }
+    </script>
+</body>
+</html>

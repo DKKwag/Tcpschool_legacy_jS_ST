@@ -10,6 +10,15 @@
         #divBox{width: 100%; height: 100px; border: 2px solid red;}
         #paraBox{width: 80%; height: 50px; border: 2px solid orange;}
         #spanBox{border: 2px solid green;}
+        #divBox2{width: 100%; height: 100px; border: 2px solid red;}
+        #paraBox2{width: 80%; height: 50px; border: 2px solid orange;}
+        #spanBox2{border: 2px solid green;}
+        #divBox3{width: 100%; height: 100px; border: 2px solid red;}
+        #paraBox3{width: 80%; height: 50px; border: 2px solid orange;}
+        #spanBox3{border: 2px solid green;}
+        #divBox4{width: 100%; height: 100px; border: 2px solid red;}
+        #paraBox4{width: 80%; height: 50px; border: 2px solid orange;}
+        #spanBox4{border: 2px solid green;}
     </style>
 </head>
 <body>
@@ -67,11 +76,91 @@
     <h1>----------------------------------------------------</h1>
 
     <h1>캡쳐링 이벤트 전파</h1>
-    <div id="divBox">
-        <p id="paraBox">박스 안의 여러 곳을 <span id="spanBox">클릭</span>해 보세요!</p>
+    <!--
+        DOM트리의 최상위부터 이벤트가 발생한 요소까지 아래쪽으로 내려가면서 전파되는 방식
+        1. Window객체의 리스너 실행
+        2. Document객체에 등록된 리스너 실행
+        3. 그 자식 요소에 등록된 리스너 실행
+        이 전파 방식을 사용하기 위해서는 addEventListener()메소드의 세 번재 인수에 true를 전달하면 된다.
+    -->
+    <div id="divBox2">
+        <p id="paraBox2">박스 안의 여러 곳을 <span id="spanBox2">클릭</span>해 보세요!</p>
     </div>
-    <p id="text"></p>
+    <p id="text2"></p>
 
+    <script>
+        //각 요소마다 캡쳐링 방식으로 click 이벤트 리스너를 등록함
+        document.getElementById("divBox2").addEventListener("click", clickDiv2, true);
+        document.getElementById("paraBox2").addEventListener("click", clickPara2, true);
+        document.getElementById("spanBox2").addEventListener("click", clickSpan2, true);
+
+        function clickDiv2(event) {
+            document.getElementById("text2").innerHTML += "div요소를 click 하셨네요!<br>";
+        }
+        function clickPara2(event) {
+            document.getElementById("text2").innerHTML += "p 요소를 click 하셨네요!<br>";
+        }
+        function clickSpan2(event) {
+            document.getElementById("text2").innerHTML += "span 요소를 click 하셨네요!"
+        }
+    </script>
+
+    <h1>----------------------------------------------------</h1>
+
+    <h1>이벤트 기본 동작의 취소</h1>
+    <div id="divBox3">
+        <p id="paraBox3">박스 안의 여러 곳을 <a id="linkBox3" href="/javascript/intro">클릭</a>해 보세요!</p>
+    </div>
+    <p id="text3"></p>
+
+    <script>
+        //각 요소마다 버블링 방식으로 click이벤트 리스너를 등록함
+        document.getElementById("divBox3").addEventListener("click", clickDiv3);
+        document.getElementById("paraBox3").addEventListener("click", clickPara3);
+        document.getElementById("linkBox3").addEventListener("click", clickLink3);
+
+        function clickDiv3(event) {
+            document.getElementById("text3").innerHTML += "div요소를 click 하셨네요! <br>";
+        }
+        function clickPara3(event) {
+            document.getElementById("text3").innerHTML += "p요소를 click 하셨네요! <br>";
+        }
+        function clickLink3(event) {
+            event.preventDefault();
+            document.getElementById("text3").innerHTML += "링크의 기본 동작을 막았어요! <br>";
+            document.getElementById("text3").innerHTML += "a요소를 click하셨네요! <br>";
+        }
+    </script>
     
+    <h1>----------------------------------------------------</h1>
+
+    <h1>이벤트 전파의 취소</h1>
+    <!--
+        기본 동작 뿐만아니라 이벤트 전파도 취소할 수 있다.
+    -->
+    <div id="divBox4">
+        <p id="paraBox4">박스 안의 여러 곳을 <a id="linkBox4" href="/javascript/intro">클릭</a>해 보세요!</p>
+    </div>
+    <p id="text4"></p>
+    
+    <script>
+        //각 요소마다 버블링 방식으로 click 이벤트 리스너를 등록함
+        document.getElementById("divBox4").addEventListener("click", clickDiv4);
+        document.getElementById("paraBox4").addEventListener("click", clickPara4);
+        document.getElementById("linkBox4").addEventListener("click", clickLink4);
+
+        function clickDiv4(event) {
+            document.getElementById("text4").innerHTML += "div요소를 click 하셨네요!<br>";
+        }
+        function clickPara4(event) {
+            document.getElementById("text4").innerHTML += "p 요소를 click 하셨네요!<br>";
+        }
+        function clickLink4(event) {
+            event.preventDefault();
+            document.getElementById("text4").innerHTML += "링크의 기본 동작을 막았어요!<br>";
+            event.stopPropagation();
+            document.getElementById("text4").innerHTML += "이벤트 전파를 막았어요!";
+        }
+    </script>
 </body>
 </html>
